@@ -1,0 +1,272 @@
+//color-categories
+
+$bg-white: #f8f9fa;
+$bg-dark : #1C1B1F;
+$hover-bg-dark: #f5f5f714;
+
+$text-default: #1e1e1e;
+$text-light-default: #f4f4f4d4;
+$text-white: white;
+
+$primary: #1366D9;
+$primary-hover-bg: #4190ff;
+
+$secondary: #5D6679;
+
+$font-secondary: #4F5B67;
+
+$success: #5FBC62;
+$failed: #FF1E34;
+
+$success-bg: #5FBC6230;
+$failed-bg: #FF1E3430;
+
+$delete-default-bg: #ff0000;
+$delete-hover-bg: #ff5d5d;
+
+//font scss
+
+h1{
+  font-weight: 700;
+  padding: 1rem;
+  background-color: $text-light-default;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0 1.25rem #8690a3;
+  z-index: 100;
+}
+
+.fixed-position{
+  position: fixed;
+}
+
+// for buttons
+.action-btns {
+  display: flex;
+  width: fit-content;
+  padding: 0;
+}
+
+.btn {
+  border-radius: 0.5em;
+  // font-size: 1em;
+  margin-left: 0.5em;
+  padding: 0.65rem;
+  transition: 275ms all ease-in-out;
+}
+
+.btn-arrow{
+  padding: 0.1rem;
+}
+
+.btn.btn-primary {
+  background-color: $primary;
+}
+
+.btn.btn-primary:active {
+  background-color: $bg-dark;
+}
+
+.btn.btn-primary:hover{
+  background-color: $primary-hover-bg;
+}
+
+.btn.btn-secondary {
+  background-color: transparent;
+  color: $font-secondary;
+  border-color: $secondary;
+}
+
+.btn.btn-secondary:active {
+  background-color: $bg-dark;
+  border-color: $bg-dark;
+  color: $bg-white;
+}
+
+.btn.btn-delete {
+  background-color: $delete-default-bg;
+  border-color: $delete-default-bg;
+}
+
+.btn.btn-delete:hover {
+  background-color: $delete-hover-bg;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  border-radius: 0.313em;
+  min-width: 100px;
+  text-align: center;
+  font-size: 0.85em;
+}
+
+.status-operational {
+  background-color: $success-bg;
+  color: $success;
+}
+
+.status-not-operational {
+  background-color: $failed-bg;
+  color: $failed;
+}
+
+
+.modal {
+  animation: visible_anim 500ms ease-in-out forwards;
+}
+
+@keyframes visible_anim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hidden_anim {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.btn:hover {
+  transform: scale(1.2);
+  animation: btnHover 200ms ease-in-out;
+}
+
+.btn:active {
+  transform: scale(0.7);
+  animation: btnPress 200ms ease-in-out;
+  background-color: black;
+}
+
+@keyframes btnPress {
+  0% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+@keyframes btnRelease {
+  0% {
+    transform: scale(0.7);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes btnHover {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+//for Search Bar
+
+.search-container {
+  position: relative;
+
+  .normal-search {
+      .search {
+          border: none;
+          width: 30rem;
+          height: 2.375rem;
+          padding-left: 2.5rem;
+          padding-right: 1.25rem;
+          background-color: #c2c2c2;
+          box-shadow: none;
+          border-radius: 1.875rem;
+          outline: 0;
+      }
+
+      .search-icon {
+          position: absolute;
+          font-size: 1rem;
+          line-height: 2.375rem;
+          left: 0.813rem;
+          top: 0;
+          color: #74788d;
+      }
+  }
+
+  .search-menu-btn {
+      font-size: 18px;
+      height: 42px;
+      width: 42px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      outline: 0;
+  }
+
+  .search-menu-btn:hover,
+  .search-menu-btn:focus {
+      .search-icon {
+          color: #699dfa;
+      }
+  }
+}
+
+
+.class-hidden {
+  animation: hidden_anim 200ms ease-in-out forwards;
+  cursor: default;
+}
+
+.class-visible {
+  animation: visible_anim 700ms ease-in-out forwards;
+}
+
+.overlay {
+  background: #fff;
+  margin-top: 10px;
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%);
+  border-radius: 0.25rem;
+}
+
+.overlay-fall {
+  animation: fall 300ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+.overlay-search {
+  padding: 1rem;
+  display: flex;
+
+  .search {
+      padding: 0.47rem 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      outline: none;
+      border-radius: 0.25rem;
+  }
+
+  .search-btn {
+      color: #fff;
+      background-color: #699dfa;
+      cursor: pointer;
+      border: 1px solid transparent;
+      padding: 0.47rem 0.75rem;
+      border-radius: 0.25rem;
+  }
+}

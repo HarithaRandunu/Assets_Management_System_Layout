@@ -1,0 +1,345 @@
+{
+    "Contracts": [
+        {
+            "contractID": 121445346,
+            "assignedDate": "new Date()",
+            "title": "Contract 1",
+            "description": "This is the first contract. These are the details"
+        },
+        {
+            "contractID": 232543490,
+            "assignedDate": "new Date()",
+            "title": "Contract 2",
+            "description": "This is the second contract. These are the details"
+        },
+        {
+            "contractID": 37895643,
+            "assignedDate": "new Date()",
+            "title": "Contract 3",
+            "description": "This is the third contract. These are the details"
+        },
+        {
+            "contractID": 43426686,
+            "assignedDate": "new Date()",
+            "title": "Contract 4",
+            "description": "This is the fourth contract. These are the details"
+        },
+        {
+            "contractID": 523421424,
+            "assignedDate": "new Date()",
+            "title": "Contract 5",
+            "description": "This is the fifth contract. These are the details"
+        }
+    ],
+
+    "Vendors": [
+        {
+            "vendorID": 484515184561,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        },
+        {
+            "vendorID": 2698456,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        },
+        {
+            "vendorID": 484515184561,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        },
+        {
+            "vendorID": 484515184561,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        },
+        {
+            "vendorID": 484515184561,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        },
+        {
+            "vendorID": 484515184561,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        },
+        {
+            "vendorID": 484515184561,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        },
+        {
+            "vendorID": 484515184561,
+            "pictureUrl": "../../assets/keyboard.png",
+            "vendorName": "John Ronald",
+            "vendorAddress": "Beaker Street, London",
+            "contactNo": "0779841519",
+            "vendorEmail": "johnRonald@gmail.com",
+            "supplyAssetsType": "Mouse"
+        }
+    ],
+
+    "Assets": [
+        {
+            "assetName": "13-inch MacBook Air with M1 chip",
+            "id": 4718050302178,
+            "model": "Apple MacBook Air",
+            "pictureUrl": "assets/Laptop.png",
+            "status": "Operational",
+            "createdOn": "Sun May 24 2020 19:16:23"
+          },
+          {
+            "assetName": "Keyboard English Standard QWERTY",
+            "id": 2018050302178,
+            "model": "Apple MacBook Air",
+            "pictureUrl": "assets/keyboard.png",
+            "status": "Not operational",
+            "createdOn": "Sun May 24 2020 19:16:23"
+          },
+          {
+            "assetName": "13-inch MacBook Air with M1 chip",
+            "id": 5008050302178,
+            "model": "Apple MacBook Air",
+            "pictureUrl": "assets/Laptop.png",
+            "status": "Operational",
+            "createdOn": "Sun May 24 2020 19:16:23"
+          },
+          {
+            "assetName": "Keyboard English Standard QWERTY",
+            "id": 6008050302178,
+            "model": "Apple MacBook Air",
+            "pictureUrl": "assets/keyboard.png",
+            "status": "Operational",
+            "createdOn": "Sun May 24 2020 19:16:23"
+          },
+          {
+            "assetName": "Keyboard English Standard QWERTY",
+            "id": 6008050302178,
+            "model": "Apple MacBook Air",
+            "pictureUrl": "assets/keyboard.png",
+            "status": "Not operational",
+            "createdOn": "Sun May 24 2020 19:16:23"
+          }
+          ,
+          {
+            "assetName": "13-inch MacBook Air with M1 chip",
+            "id": 6008050302178,
+            "model": "Apple MacBook Air",
+            "pictureUrl": "assets/Laptop.png",
+            "status": "Operational",
+            "createdOn": "Sun May 24 2020 19:16:23"
+          }
+          ,
+          {
+            "assetName": "Keyboard English Standard QWERTY",
+            "id": 6008050302178,
+            "model": "Apple MacBook Air",
+            "pictureUrl": "assets/keyboard.png",
+            "status": "Operational",
+            "createdOn": "Sun May 24 2020 19:16:23"
+          }
+    ],
+
+    "Requests": [
+        {
+            "requestID": 121445346,
+            "requestEmployeeID": 121445346,
+            "requestEmployeeName": "John Ronald",
+            "requestDate": "new Date()",
+            "requestTitle": "Request 1",
+            "requestDescription": "This is the first request. These are the details",
+            "requestChecked": "Checked"
+        },
+        {
+            "requestID": 232543490,
+            "requestEmployeeID": 24252441,
+            "requestEmployeeName": "Marks Ronald",
+            "requestDate": "new Date()",
+            "requestTitle": "Request 2",
+            "requestDescription": "This is the second request. These are the details",
+            "requestChecked": "Unchecked"
+        },
+        {
+            "requestID": 37895643,
+            "requestEmployeeID": 665863352,
+            "requestEmployeeName": "John Ronald",
+            "requestDate": "new Date()",
+            "requestTitle": "Request 3",
+            "requestDescription": "This is the third request. These are the details",
+            "requestChecked": "Checked"
+        },
+        {
+            "requestID": 43426686,
+            "requestEmployeeID": 121441236,
+            "requestEmployeeName": "John Mactavish",
+            "requestDate": "new Date()",
+            "requestTitle": "Request 4",
+            "requestDescription": "This is the fourth request. These are the details",
+            "requestChecked": "Unchecked"
+        },
+        {
+            "requestID": 523421424,
+            "requestEmployeeID": 780998789,
+            "requestEmployeeName": "John Ronald",
+            "requestDate": "new Date()",
+            "requestTitle": "Request 5",
+            "requestDescription": "This is the fifth request. These are the details",
+            "requestChecked": "Unchecked"
+        }
+    ],
+
+    "Notifications": [
+        {
+            "notificationID": 991445346,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 4",
+            "notificationDescription": "This is the first notification. These are the details",
+            "notificationChecked": "Checked"
+        },
+        {
+            "notificationID": 232543490,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 2",
+            "notificationDescription": "This is the second notification. These are the details",
+            "notificationChecked": "Checked"
+        },
+        {
+            "notificationID": 67895643,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 6",
+            "notificationDescription": "This is the third notification. These are the details",
+            "notificationChecked": "Unchecked"
+        },
+        {
+            "notificationID": 43426686,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 1",
+            "notificationDescription": "This is the fourth notification. These are the details",
+            "notificationChecked": "Unchecked"
+        },
+        {
+            "notificationID": 973421424,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 5",
+            "notificationDescription": "This is the fifth notification. These are the details",
+            "notificationChecked": "Checked"
+        },
+        {
+            "notificationID": 433421425,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 3",
+            "notificationDescription": "This is the sixth notification. These are the details",
+            "notificationChecked": "Checked"
+        },
+        {
+            "notificationID": 723421426,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 7",
+            "notificationDescription": "This is the seventh notification. These are the details",
+            "notificationChecked": "Unchecked"
+        },
+        {
+            "notificationID": 15421427,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 8",
+            "notificationDescription": "This is the eighth notification. These are the details",
+            "notificationChecked": "Checked"
+        }
+    ],
+
+    "Reports": [
+        {
+            "reportID": 121445346,
+            "reportDate": "new Date()",
+            "reportTitle": "Report 1",
+            "reportDescription": "This is the first report. These are the details",
+            "reportChecked": "Checked"
+        },
+        {
+            "reportID": 232543490,
+            "reportDate": "new Date()",
+            "reportTitle": "Report 2",
+            "reportDescription": "This is the second report. These are the details",
+            "reportChecked": "Unchecked"
+        },
+        {
+            "reportID": 37895643,
+            "reportDate": "new Date()",
+            "reportTitle": "Report 3",
+            "reportDescription": "This is the third report. These are the details",
+            "reportChecked": "Checked"
+        },
+        {
+            "reportID": 43426686,
+            "reportDate": "new Date()",
+            "reportTitle": "Report 4",
+            "reportDescription": "This is the fourth report. These are the details",
+            "reportChecked": "Unchecked"
+        },
+        {
+            "reportID": 523421424,
+            "reportDate": "new Date()",
+            "reportTitle": "Report 5",
+            "reportDescription": "This is the fifth report. These are the details",
+            "reportChecked": "Unchecked"
+        },
+        {
+            "notificationID": 123456789,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 9",
+            "notificationDescription": "This is the ninth notification. These are the details",
+            "notificationChecked": "Checked"
+        },
+        {
+            "notificationID": 987654321,
+            "notificationDate": "new Date()",
+            "notificationTitle": "Notification 10",
+            "notificationDescription": "This is the tenth notification. These are the details",
+            "notificationChecked": "Unchecked"
+        },
+        {
+            "reportID": 121212121,
+            "reportDate": "new Date()",
+            "reportTitle": "Report 6",
+            "reportDescription": "This is the sixth report. These are the details",
+            "reportChecked": "Checked"
+        },
+        {
+            "reportID": 343434343,
+            "reportDate": "new Date()",
+            "reportTitle": "Report 7",
+            "reportDescription": "This is the seventh report. These are the details",
+            "reportChecked": "Unchecked"
+        }
+    ]
+
+    
+}

@@ -1,0 +1,190 @@
+<h1>Vendors</h1>
+
+<div class="row">
+    <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label class="control-label" for="noOfRows">No. of Rows</label>
+                            </div>
+                            <div class="col-auto">
+                                <select name="noOfRows" (change)="onTableSizeChange($event)"
+                                    class="form-select form-select-sm">
+                                    <option *ngFor="let size of tableSize">
+                                        {{ size }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <span>( Total Vendors: {{vendors.length}} )</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#addVendorForum">Add Vendor</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="table-responsive">
+                    <div class="search-container">
+                        <div *ngIf="!canShowSearchAsOverlay" class="normal-search" [ngClass]="search_visible()">
+                            <input type="search" class="search" name="" id="" placeholder="Search..."
+                                [(ngModel)]="searchText">
+                            <i class="far fa-search search-icon"></i>
+                        </div>
+                        <div *ngIf="canShowSearchAsOverlay">
+                            <button [cdkMenuTriggerFor]="searchOverlay" class="search-menu-btn ripple"
+                                [ngClass]="search_hidden()">
+                                <i class="far fa-search search-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table table-sm table-borderless table-responsive table-hover mt-2">
+                        <thead class="">
+                            <tr>
+                                <th>
+                                    Vendor ID&nbsp;
+                                    <button type="button" class="btn" (click)="onVendorID()">
+                                        <i class="fas" [ngClass]="angleDirection_col01()"></i>
+                                    </button>
+                                </th>
+                                <th>
+                                    Vendor Image
+                                <th>
+                                    Vendor Name&nbsp;
+                                    <button type="button" class="btn" (click)="onVendorName()">
+                                        <i class="fas" [ngClass]="angleDirection_col02()"></i>
+                                    </button></th>
+                                <th>
+                                    Vendor Address&nbsp;
+                                    <button type="button" class="btn" (click)="onVendorAddress()">
+                                        <i class="fas" [ngClass]="angleDirection_col03()"></i>
+                                    </button></th>
+                                <th>
+                                    Contact No.&nbsp;
+                                    <button type="button" class="btn" (click)="onContactNo()">
+                                        <i class="fas" [ngClass]="angleDirection_col04()"></i>
+                                    </button></th>
+                                <th>
+                                    Vendor Email&nbsp;
+                                    <button type="button" class="btn" (click)="onVendorEmail()">
+                                        <i class="fas" [ngClass]="angleDirection_col05()"></i>
+                                    </button></th>
+                                <th>
+                                    Supply Assets Type&nbsp;
+                                    <button type="button" class="btn" (click)="onSupplyAssets()">
+                                        <i class="fas" [ngClass]="angleDirection_col06()"></i>
+                                    </button></th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                *ngFor="let vendor of vendors | search: searchText | orderBy: [selectSortType(), sortDirection] | paginate : pagingConfig; let i = index">
+                                <td>{{ vendor.vendorID }}</td>
+                                <td>
+                                    <div>
+                                        <img class="table-vendor-img" [src]="vendor.pictureUrl" alt="">
+                                    </div>
+                                </td>
+                                <td>{{ vendor.vendorName }}</td>
+                                <td>{{ vendor.vendorAddress }}</td>
+                                <td>{{ vendor.contactNo }}</td>
+                                <td>{{ vendor.vendorEmail }}</td>
+                                <td>{{ vendor.supplyAssetsType }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-delete ">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <pagination-controls id="second" previousLabel="Prev" nextLabel="Next"
+                (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+        </div>
+    </div>
+</div>
+
+<!--Search Overlay/////////////////////////////////////////////////-->
+<ng-template #searchOverlay>
+    <div class="overlay overlay-search overlay-fall">
+        <input type="search" class="search" name="" id="" placeholder="Search..." [(ngModel)]="searchText">
+        <button class="search-btn">
+            <i class="far fa-search search-icon"></i>
+        </button>
+    </div>
+</ng-template>
+
+<!--Modal Begins Here-->
+<!-- The Modal -->
+<div class="modal" id="addVendorForum">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Vendor</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+  
+          <form action="">
+            <div class="mb-3 mt-3">
+              <label for="" class="form-label">Vendor Name:</label>
+              <input type="text" class="form-control" id="" placeholder="Enter Name here..." name="">
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Vendor Address:</label>
+              <input type="text" class="form-control" id="" placeholder="Enter Vendor Address here..." name="">
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Contact No:</label>
+              <input type="text" class="form-control" id="" placeholder="Enter Contact No here..." name="">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Vendor Email:</label>
+              <input type="email" class="form-control" id="" placeholder="Enter Vendor Email here..." name="">
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Supply Asset Type:</label>
+              <select name="" id="">
+                <option value="Mouse">Mouse</option>
+                <option value="Keyboard">Keyboard</option>
+                <option value="Monitor">Monitor</option>
+                <option value="CPU">CPU</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Printer">Printer</option>
+              </select>
+              
+            </div>
+          </form>
+  
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
