@@ -1,0 +1,12 @@
+@import "../app.component.scss";
+
+
+.assets-list{
+    width: 90%;
+    margin-left: 10%;
+}
+
+.fixed-position{
+    position: fixed;
+    transition: 275ms all ease-in-out;
+  }
