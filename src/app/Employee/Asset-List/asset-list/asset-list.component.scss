@@ -1,0 +1,94 @@
+@import"../../../app.component.scss";
+
+.row {
+  flex-wrap: nowrap;
+}
+
+.card{
+  background-color: transparent ;
+}
+
+.card:first-child {
+  border: none;
+}
+
+.card-header, .card-footer{
+  background-color: transparent ;
+  border: 0 0 1 0;
+}
+
+.card-group {
+  padding: 1em;
+}
+
+// card styles
+.asset-card  {
+  background-color: white;
+}
+
+.card.asset-card .card-header {
+  font-size: 1.25em;
+  background-color: transparent;
+  border: none;
+}
+
+.card-img-top {
+  width: 60%;
+  object-fit: cover;
+  margin: auto;
+}
+
+.card-title {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+
+//card-header
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.75em;
+}
+
+.header-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.5em;
+  width: fit-content;
+  padding: 0;
+}
+
+.header-title h3 {
+  display: flex;
+  margin: 0;
+  font-size: inherit;
+  font-weight: bold;
+  margin-left: 0.375em;
+}
+
+.action-btns {
+  display: flex;
+  width: fit-content;
+  padding: 0;
+}
+
+
+
+
+.dropdown .btn {
+  border: none;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  transition: 275ms all ease-in-out;
+}
+
+.dropdown .btn:active {
+  background-color: #dadada;
+  animation: btnPress 200ms ease-in-out;
+}

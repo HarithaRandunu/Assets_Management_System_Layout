@@ -1,0 +1,67 @@
+@import"../../app.component.scss";
+
+//tables needed to be styled
+
+
+.row {
+  flex-wrap: nowrap;
+}
+
+.card {
+  background-color: transparent;
+}
+
+.card {
+  border: none;
+}
+
+.card-header {
+  background-color: transparent;
+  border: none;
+}
+
+.card-body {
+
+  //for table
+
+  tr {
+    vertical-align: middle;
+
+    th {
+      padding: 1em 2em;
+      font-size: 1.15em;
+    }
+
+    td {
+      padding: 1em 2em;
+
+      .table-asset-img {
+        width: 3em;
+        height: fit-content;
+        margin-right: 0.5em;
+      }
+    }
+
+    th:hover,
+    td:hover {
+      cursor: pointer;
+      ;
+    }
+  }
+
+  //table scss are finished from here
+}
+
+.card-footer {
+  background-color: transparent;
+  border: 1;
+
+  div {
+    align-items: center;
+  }
+}
+
+.component-list{
+  width: 90%;
+  margin-left: 10%;
+}
