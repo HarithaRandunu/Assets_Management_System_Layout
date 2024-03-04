@@ -1,0 +1,67 @@
+$bg-white: #f8f9fa;
+$bg-dark : #1C1B1F;
+$hover-bg-dark:#f5f5f714;
+$text-default: #1e1e1e;
+$text-light-default: #f4f4f4d4;
+$text-white: white;
+$primary:#1366D9;
+$secondary:#5D6679;
+$font-secondary:#4F5B67;
+$success: #5FBC62;
+$failed: #FF1E34;
+$success-bg: #5FBC6230;
+$failed-bg: #FF1E3430;
+
+
+// for buttons
+.action-btns {
+  display: flex;
+  width: fit-content;
+  padding: 0;
+}
+
+.btn {
+  border-radius: 0.25em;
+  // font-size: 1em;
+  margin-left: 0.5em;
+}
+
+.btn.btn-primary
+{
+  background-color: $primary;
+}
+
+.btn.btn-primary:active {
+  background-color: black;
+}
+
+.btn.btn-secondary {
+  background-color: transparent;
+  color: $font-secondary;
+  border-color: $secondary;
+}
+
+.btn.btn-secondary:active {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  border-radius: 0.313em;
+  min-width: 100px;
+  text-align: center;
+  font-size: 0.85em;
+}
+
+.status-operational {
+  background-color: $success-bg;
+  color: $success;
+}
+
+.status-not-operational {
+  background-color: $failed-bg;
+  color: $failed;
+}

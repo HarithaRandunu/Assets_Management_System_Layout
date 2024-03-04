@@ -1,0 +1,127 @@
+<div class="row">
+  <div>
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <div class="container">
+          <div class="row justify-content-between">
+            <div class="col-4">
+              <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                <label class="control-label" for="noOfRows">No. of Rows</label>
+              </div>
+              <div class="col-auto">
+                <select name="noOfRows" (change)="onTableSizeChange($event)" class="form-select form-select-sm">
+                  <option *ngFor="let size of tableSize">
+                    {{ size }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-auto">
+                <span>( Total Assets: {{assetList.length}} )</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 text-end">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#requestForum">Request New</button>
+          </div>
+          </div>
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-sm table-borderless table-responsive table-hover mt-2">
+              <thead class="">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Model</th>
+                  <th>Status</th>
+                  <th>Created Date</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let asset of assetList | paginate : pagingConfig; let i = index">
+                  <td>{{ asset.id }}</td>
+                  <td>
+                    <div>
+                      <img class="table-asset-img" [src]="asset.pictureUrl" alt="">
+                      {{ asset.assetName }}
+                    </div>
+                  </td>
+                  <td>{{ asset.model }}</td>
+                  <td>
+                    <div [ngSwitch]="asset.status">
+                      <span *ngSwitchCase="'Operational'" class="status status-operational">
+                        Operational
+                      </span>
+                      <span *ngSwitchCase="'Not operational'" class="status status-not-operational">
+                        Not operational
+                      </span>
+                    </div>
+                  <td>{{ asset.createdOn | date }}</td>
+                  <td><button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#requestForum">View</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+      </div>
+      <div class="card-footer text-end">
+        <pagination-controls
+         id="second"
+         previousLabel="Prev"
+         nextLabel="Next"
+         (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="requestForum">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Request Forum</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <form action="">
+          <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+          </div>
+          <div class="form-check mb-3">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember"> Remember me
+            </label>
+          </div>
+          <div class="mb-3">
+            <label for="comment">Comments:</label>
+            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

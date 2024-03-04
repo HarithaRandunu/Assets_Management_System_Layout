@@ -1,0 +1,96 @@
+@import "theme.scss";
+
+.modal {
+  animation: visible_anim 500ms ease-in-out forwards;
+}
+
+@keyframes visible_anim {
+  0% {
+      opacity: 0;
+  }
+
+  20% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes hidden_anim {
+  0% {
+      opacity: 1;
+  }
+
+  20% {
+      opacity: 1;
+  }
+
+  100% {
+      opacity: 0;
+  }
+}
+
+.btn {
+    border-radius: 0.25em;
+    // font-size: 1em;
+    margin-left: 2rem;
+    transition: 275ms all ease-in-out;
+  }
+  
+  .btn:hover {
+    transform: scale(1.2);
+    animation: btnHover 200ms ease-in-out;
+  }
+  
+  .btn:active {
+    transform: scale(0.7);
+    animation: btnPress 200ms ease-in-out;
+    background-color: black;
+  }
+
+  
+  .btn.btn-primary
+  {
+    background-color: $primary;
+  }
+  
+  .btn.btn-secondary {
+    background-color: transparent;
+    color: $font-secondary;
+    border-color: $secondary;
+  }
+  
+  .btn.btn-secondary:active {
+    border-color: black;
+    color: white;
+  }
+@keyframes btnPress {
+    0% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(0.7);
+    }
+}
+
+@keyframes btnRelease {
+    0% {
+        transform: scale(0.7);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes btnHover {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}

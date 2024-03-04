@@ -1,0 +1,100 @@
+<div class="row m-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="row section-header">
+        <div class="header-title">
+          <i class="fas fa-solid fa-laptop"></i>
+          <h3>My Assets</h3>
+        </div>
+        <div class="action-btns">
+          <button type="button" class="btn btn-secondary" [routerLink]="'/assets'">View
+            All({{assetList?.length}})</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#requestForum">Request
+            New</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row card-group">
+        <div class="col-3" *ngFor="let asset of assetList!
+            | paginate: { itemsPerPage: 4, currentPage: page, id:'first', totalItems:assetList?.length}">
+          <div class="card asset-card h-100">
+            <div class="card-header text-end">
+              <div class="dropdown">
+                <button type="button" class="btn" data-bs-toggle="dropdown">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Link 1</a></li>
+                  <li><a class="dropdown-item" href="#">Link 2</a></li>
+                  <li><a class="dropdown-item" href="#">Link 3</a></li>
+                </ul>
+              </div>
+            </div>
+            <img [src]="asset.pictureUrl" alt="card image" class="card-img-top img-fluid">
+            <div class="card-body">
+              <h4 class="card-title">{{asset.assetName}}</h4>
+              <p class="card-text">
+                ID:&nbsp;{{asset.id}}<br>
+                Model:&nbsp;{{asset.model}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="no-assets alert alert-info" *ngIf="assetList?.length == 0">
+          No assets assigned yet.
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-end">
+      <pagination-controls id="first" previousLabel="Prev" nextLabel="Next" (pageChange)="page = $event">
+      </pagination-controls>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="requestForum">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Request Forum</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <form action="">
+          <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+          </div>
+          <div class="form-check mb-3">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember"> Remember me
+            </label>
+          </div>
+          <div class="mb-3">
+            <label for="comment">Comments:</label>
+            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+@import "../../theme.scss";
+@import"../../app.component.scss";
+
+//tables needed to be styled
+
+
+.row {
+  flex-wrap: nowrap;
+}
+
+.card{
+  background-color: transparent ;
+}
+
+.card {
+  border: none;
+}
+
+.card-header {
+  background-color: transparent ;
+  border: none;
+}
+
+.card-footer{
+  background-color: transparent ;
+  border: 1;
+}
+
+.card-footer {
+
+  div {
+    align-items: center;
+  }
+}
+
+//for table
+th {
+  padding: 1em 2em;
+  font-size: 1.15em;
+}
+
+td {
+  padding: 1em 2em;
+}
+
+tr {
+  vertical-align: middle;
+}
+
+.table-asset-img {
+  width: 3em;
+  height: fit-content;
+  margin-right: 0.5em;
+}

@@ -1,0 +1,94 @@
+
+
+.card {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 26rem;
+    min-width: fit-content;
+    padding: 0.5rem 0.313rem;
+    background-color: white;
+    border: 1px solid #EAECEE;
+    border-radius: 10px;
+    color:rgb(48, 48, 48);
+  }
+  
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  
+  .info-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .card-title {
+    margin: 0;
+    margin-left: 1rem;
+    font-size: 1.25rem;
+    width: 8rem;
+    min-width: 120px;
+  }
+  
+  .info-header i {
+    font-size: 2.25em;
+  }
+  
+  .options {
+    display: flex;
+  }
+  
+  .options i {
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.3rem;
+    margin-left: 0.75rem;
+  }
+  
+  .info-detail-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .info-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .card-body {
+    width: inherit;
+  }
+  
+  .info-details {
+  
+    div{
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+      font-size: 0.825rem;
+      color: black;
+    }
+  
+    span {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+  
+  }
+  
+  .info-details:last-child {
+    // align-self: center;
+  }
+  
+  .btn {
+    font-size: 0.875rem;
+    color: black;
+    border: none;
+  }
+  
