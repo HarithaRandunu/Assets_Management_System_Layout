@@ -3,19 +3,19 @@ export class Notifications {
     notificationDate: Date;
     notificationTitle: string;
     notificationDescription: string;
-    notificationChecked: string;
+    notificationStatus: string;
 
     constructor(
         notificationID: number,
         notificationDate: Date,
         notificationTitle: string,
         notificationDescription: string,
-        notificationChecked: string
+        notificationStatus: string
     ) {
         this.notificationID = notificationID;
         this.notificationDate = notificationDate;
         this.notificationTitle = notificationTitle;
         this.notificationDescription = notificationDescription;
-        this.notificationChecked = notificationChecked;
+        this.notificationStatus = notificationStatus;
     }
 }

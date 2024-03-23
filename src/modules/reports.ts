@@ -3,19 +3,19 @@ export class Reports {
     reportDate: Date;
     reportTitle: string;
     reportDescription: string;
-    reportChecked: boolean;
+    reportStatus: boolean;
 
     constructor(
         reportID: number,
         reportDate: Date,
         reportTitle: string,
         reportDescription: string,
-        reportChecked: boolean
+        reportStatus: boolean
     ) {
         this.reportID = reportID;
         this.reportDate = reportDate;
         this.reportTitle = reportTitle;
         this.reportDescription = reportDescription;
-        this.reportChecked = reportChecked;
+        this.reportStatus = reportStatus;
     }
 }

@@ -1,8 +1,9 @@
 import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { PagingConfig } from '../modules/paging-config-model';
-import { Notifications } from '../modules/notifications';
-import { NotificationsService } from '../Services/notifications/notifications.service';
+import { PagingConfig } from '../../modules/paging-config-model';
+import { Notifications } from '../../modules/notifications';
+import { NotificationsService } from '../../Services/notifications/notifications.service';
 import { isPlatformBrowser } from '@angular/common';
+import { sortOptions } from './notification-tHead-data';
 
 @Component({
   selector: 'app-notifications',
@@ -13,6 +14,7 @@ export class NotificationsComponent implements PagingConfig, OnInit {
 
   //Requests data...
   notifications: Notifications[] = [];
+  sortData = sortOptions;
 
 
   //For search data
@@ -53,9 +55,50 @@ export class NotificationsComponent implements PagingConfig, OnInit {
 
 
   //Sorting Configurations...
-  sortDirection: string = 'asc';
-  sortType: string = 'notificationID';
+  sortDirection: string = 'asc';      //asc or desc
+  sortType: string = 'notificationID';//sort field
 
+  //Change the icon of the sort direction for each table head...
+  getNgClass(property: string): string {
+
+    //Get the sort option based on the property...
+    const sortOption = this.sortData.find(opt => opt.label === property) || this.sortData[0];
+    //Return the icon based on the sort order...
+    return sortOption.sortOrder === 'asc' ? 'fa-angle-up' : 'fa-angle-down';
+  }
+
+  //Get the sort direction for each table head...
+  getClickFunction(property: string): void {
+
+    //Get the sort option based on the property...
+    const sortOption = this.sortData.find(opt => opt.label === property) || this.sortData[0];
+    //Sort the data based on the sort option...
+    this.onSort(sortOption);
+  }
+
+  //Sort the data based on the sort Field and sort order...
+  onSort(sortOption: {label: string, sortField: string, sortOrder: string}): void {
+
+    //Change the sort order based on the current sort order...
+    if(sortOption.sortOrder === 'asc') {
+      sortOption.sortOrder = 'desc';
+      this.sortDirection = 'desc';
+    } else {
+      sortOption.sortOrder = 'asc';
+      this.sortDirection = 'asc';
+    }
+
+    //Change the sort type based on the current sort field...
+    this.sortType = sortOption.sortField;
+
+    //Change the sort order for the other sort options...
+    this.sortData.forEach(opt => {
+      if(opt !== sortOption) {
+        opt.sortOrder = 'asc';
+      }
+    })
+  }
+  
 
   //Sorting variables...
   sortNotificationID: boolean = true;

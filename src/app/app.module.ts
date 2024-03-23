@@ -2,6 +2,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,12 +23,11 @@ import { CdkMenuModule } from '@angular/cdk/menu';
 import { AssetsComponent } from './assets/assets.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AssetListComponent } from './Employee/Asset-List/asset-list/asset-list.component';
-import { MyAssetsTableComponent } from './Tables/my-assets-table/my-assets-table.component';
+import { AssetListComponent } from './asset-list/asset-list.component';
+import { MyAssetsTableComponent } from './my-assets-table/my-assets-table.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { SearchPipe } from './pipes/search/search.pipe';
-import { OrderByPipe } from './pipes/order-by/order-by.pipe';
+import { SearchPipe } from '../pipes/search/search.pipe';
+import { OrderByPipe } from '../pipes/order-by/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import { OrderByPipe } from './pipes/order-by/order-by.pipe';
     CdkMenuModule,
     NgxPaginationModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideHttpClient(withFetch()),

@@ -1,9 +1,9 @@
 import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { Contracts } from '../modules/contracts';
-import { PagingConfig } from '../modules/paging-config-model';
+import { Contracts } from '../../modules/contracts';
+import { PagingConfig } from '../../modules/paging-config-model';
 import { isPlatformBrowser } from '@angular/common';
 import { response } from 'express';
-import { ContractsService } from '../Services/contracts/contracts.service';
+import { ContractsService } from '../../Services/contracts/contracts.service';
 
 @Component({
   selector: 'app-contracts',

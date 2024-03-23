@@ -1,5 +1,5 @@
-import { AssetsService } from '../../../Services/assets/assets.service';
-import { Assets } from './../../../modules/assets';
+import { AssetsService } from '../../Services/assets/assets.service';
+import { Assets } from '../../modules/assets';
 import { Component, OnInit, inject } from '@angular/core';
 
 @Component({

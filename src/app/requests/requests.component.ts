@@ -1,8 +1,9 @@
 import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { PagingConfig } from '../modules/paging-config-model';
-import { Requests } from '../modules/requests';
-import { RequestsService } from '../Services/requests/requests.service';
+import { PagingConfig } from '../../modules/paging-config-model';
+import { Requests } from '../../modules/requests';
+import { RequestsService } from '../../Services/requests/requests.service';
+import { sortOptions } from './request-tHead-data';
 
 @Component({
   selector: 'app-requests',
@@ -13,6 +14,7 @@ export class RequestsComponent implements PagingConfig, OnInit {
 
   //Requests data...
   requests: Requests[] = [];
+  sortData = sortOptions;
 
 
   //For search data
@@ -53,203 +55,48 @@ export class RequestsComponent implements PagingConfig, OnInit {
 
 
   //Sorting Configurations...
-  sortDirection: string = 'asc';
-  sortType: string = 'requestID';
+  sortDirection: string = 'asc';    //asc or desc
+  sortType: string = 'requestID';   //sort field
 
+  //Change the icon of the sort direction for each table head...
+  getNgClass(property: string): string {
 
-  //Sorting variables...
-  sortRequestID: boolean = true;
-  sortEmployeeID: boolean = false;
-  sortEmployeeName: boolean = false;
-  sortRequestDate: boolean = false;
-  sortRequestTitle: boolean = false;
-  sortRequestDescription: boolean = false;
-  sortRequestChecked: boolean = false;
+    //Find the sort option for the property...
+    const sortOption = this.sortData.find(opt => opt.label === property) || this.sortData[0];
+    //Return the icon based on the sort order...
+    return sortOption.sortOrder === 'asc' ? 'fa-angle-up' : 'fa-angle-down';
+  }
 
+  //Get the sort direction for each table head...
+  getClickFunction(property: string): void {
 
-  //Selecting the sort direction...
-  selectSortDirection(): void {
-    if(this.sortDirection === 'asc') {
+    //Find the sort option for the property...
+    const sortOption = this.sortData.find(opt => opt.label === property) || this.sortData[0];
+    //Sort the data based on the sort option...
+    this.onSort(sortOption);
+  }
+
+  //Sort the data based on the sort field and sort order...
+  onSort(sortOption: { label: string, sortField: string, sortOrder: string }): void {
+
+    //Change the sort order based on the current sort order...
+    if (sortOption.sortOrder === 'asc') {
+      sortOption.sortOrder = 'desc';
       this.sortDirection = 'desc';
     } else {
+      sortOption.sortOrder = 'asc';
       this.sortDirection = 'asc';
     }
-  }
 
+    //Change the sort field based on the current sort field...
+    this.sortType = sortOption.sortField;
 
-  //Selecting the sort type...
-  selectSortType(): string {
-    if(this.sortRequestID) {
-      this.sortType = 'requestID';
-    } else if(this.sortRequestDate) {
-      this.sortType = 'requestDate';
-    } else if(this.sortRequestTitle) {
-      this.sortType = 'requestTitle';
-    } else if(this.sortRequestDescription) {
-      this.sortType = 'requestDescription';
-    } else if(this.sortRequestChecked) {
-      this.sortType = 'requestChecked';
-    }
-    
-    return this.sortType;
-  }
-
-
-  //Sorting icons...
-  angleDirection_col01(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortRequestID) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col02(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortEmployeeID) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col03(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortEmployeeName) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col04(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortRequestDate) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col05(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortRequestTitle) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col06(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortRequestDescription) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col07(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortRequestChecked) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-
-  //Sorting functions...
-  onRequestID(): void {
-    this.sortRequestID = true;
-    this.sortEmployeeID = false;
-    this.sortEmployeeName = false;
-    this.sortRequestDate = false;
-    this.sortRequestTitle = false;
-    this.sortRequestDescription = false;
-    this.sortRequestChecked = false;
-
-    this.selectSortDirection();
-  }
-
-  onEmployeeID(): void {
-    this.sortRequestID = false;
-    this.sortEmployeeID = true;
-    this.sortEmployeeName = false;
-    this.sortRequestDate = false;
-    this.sortRequestTitle = false;
-    this.sortRequestDescription = false;
-    this.sortRequestChecked = false;
-
-    this.selectSortDirection();
-  }
-
-  onEmployeeName(): void {
-    this.sortRequestID = false;
-    this.sortEmployeeID = false;
-    this.sortEmployeeName = true;
-    this.sortRequestDate = false;
-    this.sortRequestTitle = false;
-    this.sortRequestDescription = false;
-    this.sortRequestChecked = false;
-
-    this.selectSortDirection();
-  }
-
-  onRequestDate(): void {
-    this.sortRequestID = false;
-    this.sortEmployeeID = false;
-    this.sortEmployeeName = false;
-    this.sortRequestDate = true;
-    this.sortRequestTitle = false;
-    this.sortRequestDescription = false;
-    this.sortRequestChecked = false;
-
-    this.selectSortDirection();
-  }
-
-  onRequestTitle(): void {
-    this.sortRequestID = false;
-    this.sortEmployeeID = false;
-    this.sortEmployeeName = false;
-    this.sortRequestDate = false;
-    this.sortRequestTitle = true;
-    this.sortRequestDescription = false;
-    this.sortRequestChecked = false;
-
-    this.selectSortDirection();
-  }
-
-  onRequestDescription(): void {
-    this.sortRequestID = false;
-    this.sortEmployeeID = false;
-    this.sortEmployeeName = false;
-    this.sortRequestDate = false;
-    this.sortRequestTitle = false;
-    this.sortRequestDescription = true;
-    this.sortRequestChecked = false;
-
-    this.selectSortDirection();
-  }
-
-  onRequestChecked(): void {
-    this.sortRequestID = false;
-    this.sortEmployeeID = false;
-    this.sortEmployeeName = false;
-    this.sortRequestDate = false;
-    this.sortRequestTitle = false;
-    this.sortRequestDescription = false;
-    this.sortRequestChecked = true;
-
-    this.selectSortDirection();
+    //Change the sort order for the other sort options...
+    this.sortData.forEach(opt => {
+      if (opt !== sortOption) {
+        opt.sortOrder = 'asc';
+      }
+    })
   }
 
 

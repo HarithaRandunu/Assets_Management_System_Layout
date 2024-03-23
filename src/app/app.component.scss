@@ -33,6 +33,11 @@ h1{
   border-radius: 0.5rem;
   box-shadow: 0rem 0 1.25rem #8690a3;
   z-index: 100;
+  cursor: pointer;
+}
+
+.th-content {
+  display: flex;
 }
 
 .fixed-position{
@@ -56,6 +61,7 @@ h1{
 
 .btn-arrow{
   padding: 0.1rem;
+  width: 30px;
 }
 
 .btn.btn-primary {
@@ -110,10 +116,11 @@ h1{
   color: $failed;
 }
 
-
+// for modal
 .modal {
   animation: visible_anim 500ms ease-in-out forwards;
 }
+
 
 @keyframes visible_anim {
   0% {

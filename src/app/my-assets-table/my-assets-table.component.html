@@ -42,52 +42,35 @@
           <table class="table table-sm table-borderless table-responsive table-hover mt-2">
             <thead class="">
               <tr>
-                <th>
-                  Id&nbsp;
-                  <button type="button" class="btn" (click)="onID()">
-                    <i class="fas" [ngClass]="angleDirection_col01()"></i>
-                  </button>
-                </th>
-                <th>
-                  Name&nbsp;
-                  <button type="button" class="btn" (click)="onAssetName()">
-                    <i class="fas" [ngClass]="angleDirection_col02()"></i>
-                  </button>
-                </th>
-                <th>
-                  Model&nbsp;
-                  <button type="button" class="btn" (click)="onModel()">
-                    <i class="fas" [ngClass]="angleDirection_col03()"></i>
-                  </button>
-                </th>
-                <th>
-                  Status&nbsp;
-                  <button type="button" class="btn" (click)="onStatus()">
-                    <i class="fas" [ngClass]="angleDirection_col04()"></i>
-                  </button>
-                </th>
-                <th>
-                  Created Date&nbsp;
-                  <button type="button" class="btn" (click)="onCreatedDate()">
-                    <i class="fas" [ngClass]="angleDirection_col05()"></i>
-                  </button>
+                <th>Asset Image</th>
+                <th *ngFor="let data of sortData">
+                  <div class="th-content">
+                    <span>
+                      {{ data.label }}
+                    </span>
+                    <button type="button" class="btn btn-arrow" (click)="getClickFunction(data.label)">
+                      <i class="fas" [ngClass]="getNgClass(data.label)"></i>
+                    </button>
+                  </div>
                 </th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               <tr
-                *ngFor="let asset of assets | search: searchText | orderBy: [selectSortType(), sortDirection] | paginate : pagingConfig; let i = index">
-                <td>{{ asset.id }}</td>
+                *ngFor="let asset of assets | search: searchText | orderBy: [sortType, sortDirection] | paginate : pagingConfig; let i = index">
+                
                 <td>
                   <div>
                     <img class="table-asset-img" [src]="asset.pictureUrl" alt="">
-                    {{ asset.assetName }}
                   </div>
                 </td>
-                <td>{{ asset.model }}</td>
+                <td>{{ asset.assetID }}</td>
+                <td>{{ asset.assetName }}</td>
+                <td>{{ asset.assetType }}</td>
+                <td>{{ asset.assetValue }}</td>
                 <td>
-                  <div [ngSwitch]="asset.status">
+                  <div [ngSwitch]="asset.assetStatus">
                     <span *ngSwitchCase="'Operational'" class="status status-operational">
                       Operational
                     </span>
@@ -96,7 +79,8 @@
                     </span>
                   </div>
                 </td>
-                <td>{{ asset.createdOn | date }}</td>
+                <td>{{ asset.assignedDate | date }}</td>
+                <td>{{ asset.dueDate | date }}</td>
                 <td><button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal"
                     data-bs-target="#requestForum">
                     View Asset Log

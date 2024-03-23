@@ -1,19 +1,21 @@
-import { Contracts } from './../modules/contracts';
+
 import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { Vendors } from '../modules/vendors';
-import { PagingConfig } from '../modules/paging-config-model';
+import { Vendors } from '../../modules/vendors';
+import { PagingConfig } from '../../modules/paging-config-model';
 import { isPlatformBrowser } from '@angular/common';
-import { BodyComponent } from '../body/body.component';
-import { VendorsService } from '../Services/vendors/vendors.service';
+import { VendorsService } from '../../Services/vendors/vendors.service';
+import { sortOptions } from './vendor-tHead-data';
 
 @Component({
   selector: 'app-vendors',
   templateUrl: './vendors.component.html',
   styleUrl: './vendors.component.scss'
 })
+
 export class VendorsComponent implements PagingConfig, OnInit {
 
   vendors: Vendors[] = [];
+  sortData = sortOptions;
 
   //For search data
   searchText = '';
@@ -27,7 +29,8 @@ export class VendorsComponent implements PagingConfig, OnInit {
     }
   }
 
-  //USed to get inner width of the browser....
+
+  //Used to get inner width of the browser....
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -47,168 +50,54 @@ export class VendorsComponent implements PagingConfig, OnInit {
       this.checkCanShowSearchAsOverlay(window.innerWidth);
     }
   }
+  
 
-  sortDirection: string = 'asc';
-  sortType: string = 'vendorID';
+  //For sorting data...
+  sortDirection: string = '';     //asc or desc
+  sortType: string = 'reportID';  //sort field
 
-  sortVendorID: boolean = true;
-  sortVendorName: boolean = false;
-  sortVendorAddress: boolean = false;
-  sortContactNo: boolean = false;
-  sortVendorEmail: boolean = false;
-  sortSupplyAssets: boolean = false;
+  //Change the icon of the sort direction for each table head...
+  getNgClass(property: string): string {
 
-  angleDirection_col01(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortVendorID) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
+    //Get the sort option based on the property...
+    const option = this.sortData.find(opt => opt.label === property) || this.sortData[0];
+    //Return the icon based on the sort order...
+    return option.sortOrder === 'asc' ? 'fa-angle-up' : 'fa-angle-down';
   }
 
-  angleDirection_col02(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortVendorName) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
+  //Get the sort direction for each table head...
+  getClickFunction(property: string): void {
+
+    //Get the sort option based on the property...
+    const option = this.sortData.find(opt => opt.label === property) || this.sortData[0];
+    //Sort the data based on the sort option...
+    this.onSort(option);
   }
 
-  angleDirection_col03(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortVendorAddress) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
+  //Sort the data based on the sort field and sort order...
+  onSort(option: {label: string, sortField: string, sortOrder: string}): void {
 
-  angleDirection_col04(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortContactNo) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col05(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortVendorEmail) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  angleDirection_col06(): string {
-    let styleClass = '';
-    if (this.sortDirection === 'asc' && this.sortSupplyAssets) {
-      styleClass = 'fa-angle-up';
-    } else {
-      styleClass = 'fa-angle-down';
-    }
-    return styleClass;
-  }
-
-  selectSortDirection(): void {
-    if(this.sortDirection === 'asc') {
+    //Change the sort order based on the current sort order...
+    if(option.sortOrder === 'asc') {
+      option.sortOrder = 'desc';
       this.sortDirection = 'desc';
     } else {
+      option.sortOrder = 'asc';
       this.sortDirection = 'asc';
     }
+
+    //Set the sort type to the sort field...
+    this.sortType = option.sortField;
+
+    //Change the sort order of the other options...
+    this.sortData.forEach(opt => {
+      if(opt !== option) {
+        opt.sortOrder = 'asc';
+      }
+    });
   }
 
-  selectSortType(): string {
-    if(this.sortVendorID) {
-      this.sortType = 'vendorID';
-    } else if(this.sortVendorName) {
-      this.sortType = 'vendorName';
-    } else if (this.sortContactNo) {
-      this.sortType  = 'contactNo';
-    } else if(this.sortVendorEmail) {
-      this.sortType = 'vendorEmail';
-    } else {
-      this.sortType = 'supplyAssets';
-    }
-    return this.sortType;
-  }
-
-  onVendorID(): void {
-    this.sortVendorID = true;
-    this.sortVendorName = false;
-    this.sortVendorAddress = false;
-    this.sortContactNo = false;
-    this.sortVendorEmail = false;
-    this.sortSupplyAssets = false;
-
-    this.selectSortDirection();
-  }
-
-  onVendorName(): void {
-    this.sortVendorID = false;
-    this.sortVendorName = true;
-    this.sortVendorAddress = false;
-    this.sortContactNo = false;
-    this.sortVendorEmail = false;
-    this.sortSupplyAssets = false;
-
-    this.selectSortDirection();
-  }
-
-  onVendorAddress(): void {
-    this.sortVendorID = false;
-    this.sortVendorName = false;
-    this.sortVendorAddress = true;
-    this.sortContactNo = false;
-    this.sortVendorEmail = false;
-    this.sortSupplyAssets = false;
-
-    this.selectSortDirection();
-  }
-
-  onContactNo(): void {
-    this.sortVendorID = false;
-    this.sortVendorName = false;
-    this.sortVendorAddress = false;
-    this.sortContactNo = true;
-    this.sortVendorEmail = false;
-    this.sortSupplyAssets = false;
-
-    this.selectSortDirection();
-  }
-
-  onVendorEmail(): void {
-    this.sortVendorID = false;
-    this.sortVendorName = false;
-    this.sortVendorAddress = false;
-    this.sortContactNo = false;
-    this.sortVendorEmail = true;
-    this.sortSupplyAssets = false;
-
-    this.selectSortDirection();
-  }
-
-  onSupplyAssets(): void {
-    this.sortVendorID = false;
-    this.sortVendorName = false;
-    this.sortVendorAddress = false;
-    this.sortContactNo = false;
-    this.sortVendorEmail = false;
-    this.sortSupplyAssets = true;
-
-    this.selectSortDirection();
-  }
-
-
-
+  
   //Boolean result of weather search bar is shown or not...
   canShowSearchAsOverlay: boolean = false;
 
@@ -228,7 +117,7 @@ export class VendorsComponent implements PagingConfig, OnInit {
   }
 
 
-  //Decide the class should be visi
+  //Change the visibility of the search bar...
   search_hidden(): string {
     let styleClass = '';
     if (!this.class_visibility) {
@@ -241,6 +130,7 @@ export class VendorsComponent implements PagingConfig, OnInit {
     return styleClass;
   }
 
+  //Decide the class should be hidden
   search_visible(): string {
     let styleClass = '';
     if (this.class_visibility) {
@@ -254,34 +144,28 @@ export class VendorsComponent implements PagingConfig, OnInit {
   }
 
 
-
+  //Variables for pagination...
   title = 'ngx-paging-sample';
   id = "second";
 
 
-
+  //Pagination variables...
   currentPage: number = 1;
   itemsPerPage: number = 5;
   totalItems: number = 0;
   tableSize: number[] = [5, 10, 15, 20];
   pagingConfig: PagingConfig = {} as PagingConfig;
 
-
-
-  
-
+  //For pagination...
   onTableDataChange(event: any) {
     this.pagingConfig.currentPage = event;
     this.vendorServ.getVendors();
   }
 
+  //For changing the number of items per page...
   onTableSizeChange(event: any): void {
     this.pagingConfig.itemsPerPage = event.target.value;
     this.pagingConfig.currentPage = 1;
     this.vendorServ.getVendors();
   }
-
-
-
-
 }

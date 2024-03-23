@@ -1,4 +1,4 @@
-<h1>Requests</h1>
+<h1>Notifications</h1>
 
 <div class="row">
     <div class="card">
@@ -47,47 +47,25 @@
                     <table class="table table-sm table-borderless table-responsive table-hover mt-2">
                         <thead class="">
                             <tr>
-                                <th>
-                                    Notification ID&nbsp;
-                                    <button type="button" class="btn btn-arrow" (click)="onNotificationID()">
-                                        <i class="fas" [ngClass]="angleDirection_col01()"></i>
-                                    </button>
-                                </th>
-                                <th>
-                                    Notification Date&nbsp;
-                                    <button type="button" class="btn btn-arrow" (click)="onNotificationDate()">
-                                        <i class="fas" [ngClass]="angleDirection_col01()"></i>
-                                    </button>
-                                </th>
-                                <th>
-                                    Notification Title&nbsp;
-                                    <button type="button" class="btn btn-arrow" (click)="onNotificationTitle()">
-                                        <i class="fas" [ngClass]="angleDirection_col02()"></i>
-                                    </button>
-                                </th>
-                                <th>
-                                    Description&nbsp;
-                                    <button type="button" class="btn btn-arrow" (click)="onNotificationDescription()">
-                                        <i class="fas" [ngClass]="angleDirection_col02()"></i>
-                                    </button>
-                                </th>
-                                <th>
-                                    Checked/Unchecked&nbsp;
-                                    <button type="button" class="btn btn-arrow" (click)="onNotificationChecked()">
-                                        <i class="fas" [ngClass]="angleDirection_col03()"></i>
-                                    </button>
+                                <th *ngFor="let data of sortData">
+                                    <div class="th-content">
+                                        <span>{{ data.label }}</span>
+                                        <button type="button" class="btn btn-arrow" (click)="getClickFunction(data.label)">
+                                            <i class="fas" [ngClass]="getNgClass(data.label)"></i>
+                                        </button>
+                                    </div>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr
-                                *ngFor="let notification of notifications  | search: searchText | orderBy: [selectSortType(), sortDirection]| orderBy: [selectSortType(), sortDirection] | paginate : pagingConfig; let i = index">
+                                *ngFor="let notification of notifications  | search: searchText | orderBy: [sortType, sortDirection] | paginate : pagingConfig; let i = index">
                                 <td>{{ notification.notificationID }}</td>
                                 <td>{{ notification.notificationDate }}</td>
                                 <td>{{ notification.notificationTitle }}</td>
                                 <td>{{ notification.notificationDescription}}</td>
                                 <td>
-                                    <div [ngSwitch]="notification.notificationChecked">
+                                    <div [ngSwitch]="notification.notificationStatus">
                                         <span *ngSwitchCase="'Checked'" class="status status-operational">
                                             Checked
                                         </span>

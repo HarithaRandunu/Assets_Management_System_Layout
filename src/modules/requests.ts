@@ -1,27 +1,24 @@
 export class Requests {
     requestID: number;
-    requestEmployeeID: number;
-    requestEmployeeName: string;
     requestDate: Date;
+    requestEmployeeID: number;
     requestTitle: string;
     requestDescription: string;
-    requestChecked: string;
+    requestStatus: string;
 
     constructor(
         requestID: number,
-        requestEmployeeID: number,
-        requestEmployeeName: string,
         requestDate: Date,
+        requestEmployeeID: number,
         requestTitle: string,
         requestDescription: string,
-        requestChecked: string
+        requestStatus: string
     ) {
         this.requestID = requestID;
-        this.requestEmployeeID = requestEmployeeID;
-        this.requestEmployeeName = requestEmployeeName;
         this.requestDate = requestDate;
+        this.requestEmployeeID = requestEmployeeID;
         this.requestTitle = requestTitle;
         this.requestDescription = requestDescription;
-        this.requestChecked = requestChecked;
+        this.requestStatus = requestStatus;
     }
 }
